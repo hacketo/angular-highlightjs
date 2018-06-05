@@ -1,6 +1,6 @@
 /*! angular-highlightjs
 version: 0.7.1
-build date: 2017-02-28
+build date: 2018-06-05
 author: Chih-Hsuan Fan
 https://github.com/pc035860/angular-highlightjs.git */
 
@@ -500,21 +500,22 @@ includeDirFactory = function (dirName) {
 (function (module) {
   module.directive('hljs', hljsDir);
 
-  angular.forEach(['interpolate', 'hljsInterpolate', 'compile', 'hljsCompile'], function (name) {
-    module.directive(name, interpolateDirFactory(name));
-  });
-
-  angular.forEach(['language', 'hljsLanguage'], function (name) {
-    module.directive(name, languageDirFactory(name));
-  });
-
-  angular.forEach(['source', 'hljsSource'], function (name) {
-    module.directive(name, sourceDirFactory(name));
-  });
-
-  angular.forEach(['include', 'hljsInclude'], function (name) {
-    module.directive(name, includeDirFactory(name));
-  });
+  var d = ['interpolate', 'hljsInterpolate', 'compile', 'hljsCompile'];
+  for (var i = 0; i < d.length; i++){
+    module.directive(d[i], interpolateDirFactory(d[i]));
+  }
+  d = ['language', 'hljsLanguage'];
+  for (i = 0; i < d.length; i++){
+    module.directive(d[i], languageDirFactory(d[i]));
+  }
+  d = ['source', 'hljsSource'];
+  for (i = 0; i < d.length; i++){
+    module.directive(d[i], sourceDirFactory(d[i]));
+  }
+  d = ['include', 'hljsInclude'];
+  for (i = 0; i < d.length; i++){
+    module.directive(d[i], includeDirFactory(d[i]));
+  }
 })(ngModule);
 
 
